@@ -11,8 +11,6 @@ jobs:
     strategy:
       matrix:
         node_version: [16]
-    env:
-      TOKEN: ${{ secrets.GH_TOKEN }}
     steps:
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node_version }}
@@ -34,5 +32,5 @@ jobs:
       - name: repository dispatch
         uses: peter-evans/repository-dispatch@v2
         with:
-          token: ${{ env.TOKEN }}
+          token: ${{ env.GH_TOKEN }}
           event-type: build-event
